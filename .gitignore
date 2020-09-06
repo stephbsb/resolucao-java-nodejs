@@ -23,8 +23,12 @@
 hs_err_pid*
 
 # eclipse project file
-*/.settings/
-*/.classpath
-*/.project
-*/bin
+.settings/
+.classpath
+.project
+bin/
 .metadata
+
+
+# vscode files
+node_modules
