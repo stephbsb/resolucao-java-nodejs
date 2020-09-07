@@ -11,9 +11,9 @@ Banco de Dados: sqlite3 (Relacional) </br>
 
 # BD
 
-O banco de dados usado é armazenado em memória no arquivo src/database/database.db
-Para visualizar o banco de dados no VSCode pode ser usada a extensao SQLite.
-Clique com o botão direito sobre o arquivo e depois em 'Open DataBase'.
+O banco de dados usado é armazenado em memória no arquivo src/database/database.db</br>
+Para visualizar o banco de dados no VSCode pode ser usada a extensao SQLite.</br>
+Clique com o botão direito sobre o arquivo e depois em 'Open DataBase'.</br>
 Abra a tabela clicando sobre ela e depois em 'Show Table' (Isso deve ser feito também quando a tabela for atualizada);
 
 ## Tabela: veiculo
@@ -57,3 +57,19 @@ Atualiza alguns dados do veiculo
 #### DELETE /veiculos/{id}
 
 Apaga o veiculo
+
+# Como Executar
+
+```bash
+# git clone https://github.com/stephbsb/resolucao-java-nodejs.git
+# Abrir o terminal no diretorio contendo o root do projeto
+$ cd <caminho do diretorio>/CadastroDeVeiculos/backend
+
+# Instale as dependencias
+$ npm install
+
+# Execute a aplicação
+$ npm start
+
+# A API irá ouvir requisições na porta 5000
+```
