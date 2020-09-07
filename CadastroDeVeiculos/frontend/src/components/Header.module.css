@@ -1,0 +1,48 @@
+.header {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background: #fb1;
+}
+
+.header ul {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header li {
+  height: 60%;
+  width: 25%;
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.header li a {
+  display: block;
+  border: none;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.header li a:focus,
+.header li a:hover {
+  color: black;
+}
+
+.header li:hover {
+  box-shadow: 0px 0px 0px 2px #fb1, 0px 0px 0px 4px black;
+}
+
+.header li:first-child {
+  margin-right: 30px;
+}

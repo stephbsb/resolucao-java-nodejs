@@ -1,0 +1,17 @@
+.pesquisa {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 1000px) {
+  .pesquisa {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .pesquisa > * {
+    margin-bottom: 20px;
+  }
+}
