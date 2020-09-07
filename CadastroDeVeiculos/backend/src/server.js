@@ -2,8 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const db = require('./database/connection');
-
 const veiculosRoutes = require('./routes/veiculosRoutes');
 
 const app = express();
