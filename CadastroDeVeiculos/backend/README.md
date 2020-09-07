@@ -5,9 +5,9 @@ Uma API JSON RESTful com os métodos GET, POST, PUT, PATCH e DELETE
 
 # Tecnologias Utilizadas
 
--> NodeJS
--> ExpressJS
--> Banco de Dados: sqlite3 (Relacional)
+NodeJS </br>
+ExpressJS </br>
+Banco de Dados: sqlite3 (Relacional) </br>
 
 # BD
 
