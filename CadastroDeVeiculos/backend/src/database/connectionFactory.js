@@ -27,13 +27,7 @@ const createTable = () => {
 
   db.run(sql, function (err) {
     if (err) {
-      console.log('Erro ao cria a tabela Veiculos');
-    } else {
-      if (this.changes === 0) {
-        console.log('Tabela já existe, nenhuma mudança foi feita.');
-      } else {
-        console.log('Tabela Veiculo criada com sucesso');
-      }
+      console.log('Erro ao criar a tabela Veiculos');
     }
   });
 };
