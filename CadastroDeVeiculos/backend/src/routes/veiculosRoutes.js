@@ -5,7 +5,7 @@ const veiculosController = require('../controllers/veiculosController');
 const router = express.Router();
 
 router.get('/', veiculosController.getVeiculos);
-router.get('/find', veiculosController.getVeiculosByParam);
+router.get('/find', veiculosController.findVeiculos);
 router.get('/:id', veiculosController.getVeiculoById);
 router.post('/', veiculosController.postVeiculo);
 router.put('/:id', veiculosController.putVeiculo);
