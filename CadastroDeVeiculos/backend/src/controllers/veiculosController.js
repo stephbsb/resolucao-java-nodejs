@@ -1,19 +1,25 @@
-const db = require('../database/connection');
+const db = require('../database/connectionFactory');
+const veiculoToPE = require('../utils/veiculoToPE');
+const { marcas, validateMarca } = require('../utils/validateMarca');
+
 const getDateTime = require('../utils/getDateTime');
 
-const getVeiculos = (req, res, next) => {
-  db.all(`SELECT * FROM veiculo`, [], (err, veiculos) => {
+const getVeiculos = (req, res) => {
+  const sql = `SELECT * FROM veiculo`;
+
+  db.all(sql, [], (err, veiculos) => {
     if (err) {
-      console.log(err);
-      res.status(500).json({ error: 'erro ao ler o banco de dados' });
+      res.status(500).json({ error: 'Erro ao ler o banco de dados' });
     } else {
-      console.log('Busca Concluida');
+      veiculos.forEach((veiculo) => {
+        veiculoToPE(veiculo);
+      });
       res.status(200).json({ veiculos: veiculos });
     }
   });
 };
 
-const getVeiculosByParam = (req, res, next) => {
+const getVeiculosByParam = (req, res) => {
   const q = req.query;
 
   if (!q) {
@@ -30,6 +36,9 @@ const getVeiculosByParam = (req, res, next) => {
         console.log(err);
         res.status(500).json({ error: 'erro ao ler o banco de dados' });
       } else {
+        veiculos.forEach((veiculo) => {
+          veiculoToPE(veiculo);
+        });
         console.log('Busca Concluida');
         res.status(200).json({ veiculos: veiculos });
       }
@@ -37,16 +46,23 @@ const getVeiculosByParam = (req, res, next) => {
   );
 };
 
-const getVeiculoById = (req, res, next) => {
+const getVeiculoById = (req, res) => {
   const id = req.params.id;
 
-  db.get(`SELECT * FROM veiculo WHERE id = ? `, [id], (err, row) => {
+  const sql = `SELECT * FROM veiculo WHERE id = ? `;
+
+  db.get(sql, [id], (err, veiculo) => {
     if (err) {
-      console.log(err);
-      res.status(500).json({ error: 'erro ao ler o banco de dados' });
+      res.status(500).json({ error: 'Erro ao ler o banco de dados' });
     } else {
-      console.log('Busca Concluida');
-      res.status(200).json({ veiculo: row });
+      if (veiculo) {
+        veiculoToPE(veiculo);
+
+        console.log('Busca Concluida');
+        res.status(200).json({ veiculo: veiculo });
+      } else {
+        res.status(400).json({ error: 'Este veículo nao existe' });
+      }
     }
   });
 };
@@ -54,47 +70,85 @@ const getVeiculoById = (req, res, next) => {
 const postVeiculo = (req, res, next) => {
   const { veiculo, marca, ano, descricao, vendido } = req.body;
 
-  const created = getDateTime();
-  const updated = created;
+  if (
+    veiculo == null ||
+    marca == null ||
+    ano == null ||
+    descricao == null ||
+    vendido == null
+  ) {
+    res.status(400).json({ error: 'Dados incompletos!' });
+  } else if (!validateMarca(marca)) {
+    res.status(400).json({
+      error:
+        'Entre com uma marca válida. Não são aceitos marcas escritas de forma errada!',
+      marcas: marcas,
+    });
+  } else {
+    const created = getDateTime();
+    const updated = created;
 
-  const sql = `INSERT INTO veiculo (veiculo,marca,ano,descricao,vendido,created,updated) VALUES (?,?,?,?,?,?,?)`;
+    const sql = `INSERT INTO veiculo (veiculo,marca,ano,descricao,vendido,created,updated) VALUES (?,?,?,?,?,?,?)`;
 
-  db.run(
-    sql,
-    [veiculo, marca, ano, descricao, vendido, created, updated],
-    (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('Veiculo cadastrado com sucesso');
+    db.run(
+      sql,
+      [veiculo, marca, ano, descricao, vendido, created, updated],
+      (err) => {
+        if (err) {
+          res.status(500).json({ error: 'Erro ao criar veiculo' });
+        } else {
+          console.log('Veiculo cadastrado com sucesso');
+          res.status(200).json({ message: 'Veículo criado com sucesso!' });
+        }
       }
-    }
-  );
-
-  res.status(200).json({ message: 'Veículo criado com sucesso!' });
+    );
+  }
 };
 
 const putVeiculo = (req, res, next) => {
   const id = req.params.id;
   const { veiculo, marca, ano, descricao, vendido } = req.body;
 
-  if (!veiculo || !marca || !ano || !descricao || !vendido) {
-    res.status(500).json({ error: 'Dados inclompletos!' });
+  if (
+    veiculo == null ||
+    marca == null ||
+    ano == null ||
+    descricao == null ||
+    vendido == null
+  ) {
+    res.status(400).json({ error: 'Dados incompletos!' });
+  } else if (!validateMarca(marca)) {
+    res.status(400).json({
+      error:
+        'Entre com uma marca válida. Não são aceitos marcas escritas de forma errada!',
+      marcas: marcas,
+    });
+  } else {
+    const updated = getDateTime();
+
+    const sql = `UPDATE veiculo SET veiculo = ?, marca = ?, ano = ?, descricao = ?, vendido = ?, updated = ?  WHERE id = ?`;
+
+    db.run(
+      sql,
+      [veiculo, marca, ano, descricao, vendido, updated, id],
+      function (err) {
+        if (err) {
+          console.log(err);
+          const error = new Error('Erro ao atualizar dados do veiculo.');
+          error.code = 500;
+          next(error);
+        } else {
+          if (this.changes === 0) {
+            res.status(400).json({ message: 'Este veículo nao existe.' });
+          } else {
+            res
+              .status(200)
+              .json({ message: 'Veiculo atualizado com sucesso.' });
+          }
+        }
+      }
+    );
   }
-
-  const updated = getDateTime();
-
-  const sql = `UPDATE veiculo SET veiculo = ?, marca = ?, ano = ?, descricao = ?, vendido = ?, updated = ?  WHERE id = ?`;
-
-  db.run(sql, [veiculo, marca, ano, descricao, vendido, updated, id], (err) => {
-    if (err) {
-      console.log(err);
-      res.status(500).json({ error: 'erro ao atualizar dados do veiculo.' });
-    } else {
-      console.log('Busca Concluida');
-      res.status(200).json({ message: 'veiculo atualizado com sucesso.' });
-    }
-  });
 };
 
 const patchVeiculo = (req, res, next) => {
@@ -103,38 +157,51 @@ const patchVeiculo = (req, res, next) => {
 
   if (dados == null) {
     res.status(500).json({ error: 'Não há dados para atualizar' });
+  } else if (dados.marca && !validateMarca(dados.marca)) {
+    res.status(400).json({
+      error:
+        'Entre com uma marca válida. Não são aceitos marcas escritas de forma errada!',
+      marcas: marcas,
+    });
+  } else {
+    const updated = getDateTime();
+
+    dadosKeys = Object.keys(dados);
+    dadosValues = Object.values(dados);
+
+    const sql = `UPDATE veiculo SET ${dadosKeys.map(
+      (dadoKey) => `${dadoKey} = ? `
+    )}, updated = ?  WHERE id = ?`;
+
+    db.run(sql, [...dadosValues, updated, id], function (err) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Erro ao atualizar dados do veiculo.' });
+      } else {
+        if (this.changes === 0) {
+          res.status(400).json({ error: 'Este veículo nao existe.' });
+        } else {
+          console.log('Busca Concluida');
+          res.status(200).json({ message: 'Veiculo atualizado com sucesso.' });
+        }
+      }
+    });
   }
-
-  const updated = getDateTime();
-
-  dadosKeys = Object.keys(dados);
-  dadosValues = Object.values(dados);
-
-  const sql = `UPDATE veiculo SET ${dadosKeys.map(
-    (dadoKey) => `${dadoKey} = ? `
-  )}, updated = ?  WHERE id = ?`;
-
-  db.run(sql, [...dadosValues, updated, id], (err) => {
-    if (err) {
-      console.log(err);
-      res.status(500).json({ error: 'erro ao atualizar dados do veiculo.' });
-    } else {
-      console.log('Busca Concluida');
-      res.status(200).json({ message: 'veiculo atualizado com sucesso.' });
-    }
-  });
 };
 
 const deleteVeiculo = (req, res, next) => {
   const id = req.params.id;
 
-  db.run(`DELETE FROM veiculo WHERE id = ? `, [id], (err) => {
+  db.run(`DELETE FROM veiculo WHERE id = ? `, [id], function (err) {
     if (err) {
       console.log(err);
-      res.status(500).json({ error: 'erro ao deletar veiculo.' });
+      res.status(500).json({ error: 'Erro ao deletar veiculo.' });
     } else {
-      console.log('Busca Concluida');
-      res.status(200).json({ message: 'veiculo deletado com sucesso.' });
+      if (this.changes === 0) {
+        res.status(400).json({ error: 'Este veículo nao existe.' });
+      } else {
+        res.status(200).json({ message: 'Veiculo deletado com sucesso.' });
+      }
     }
   });
 };
