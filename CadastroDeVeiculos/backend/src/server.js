@@ -1,12 +1,9 @@
-// API entrada da api
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const veiculosRoutes = require('./routes/veiculosRoutes');
 
 const app = express();
-
-// transforma o corpo para formato json
 app.use(bodyParser.json());
 
 // headers para lidar com erro de CORS
@@ -24,7 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// middleware that filters the url to the right routes
+// middleware que filtra rotas para caminhos iniciados com /veiculos
 app.use('/veiculos', veiculosRoutes);
 
 // Se rota nao existe retorna um erro
