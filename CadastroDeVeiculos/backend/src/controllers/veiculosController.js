@@ -26,24 +26,35 @@ const getVeiculosByParam = (req, res) => {
     return res
       .status(400)
       .json({ error: 'Filtros incompletos para a pesquisa.' });
-  }
+  } else {
+    console.log();
+    let value = Object.values(q)[0];
 
-  db.all(
-    `SELECT * FROM veiculo WHERE ${Object.keys(q)[0]} = ? COLLATE NOCASE`,
-    [Object.values(q)[0]],
-    (err, veiculos) => {
-      if (err) {
-        console.log(err);
-        res.status(500).json({ error: 'erro ao ler o banco de dados' });
-      } else {
-        veiculos.forEach((veiculo) => {
-          veiculoToPE(veiculo);
-        });
-        console.log('Busca Concluida');
-        res.status(200).json({ veiculos: veiculos });
+    if (Object.keys(q)[0] === 'vendido') {
+      if (Object.values(q)[0] === 'true') {
+        value = 1;
+      } else if (Object.values(q)[0] === 'false') {
+        value = 0;
       }
     }
-  );
+
+    db.all(
+      `SELECT * FROM veiculo WHERE ${Object.keys(q)[0]} = ? COLLATE NOCASE`,
+      [value],
+      (err, veiculos) => {
+        if (err) {
+          console.log(err);
+          res.status(500).json({ error: 'erro ao ler o banco de dados' });
+        } else {
+          veiculos.forEach((veiculo) => {
+            veiculoToPE(veiculo);
+          });
+          console.log('Busca Concluida');
+          res.status(200).json({ veiculos: veiculos });
+        }
+      }
+    );
+  }
 };
 
 const getVeiculoById = (req, res) => {
@@ -93,12 +104,14 @@ const postVeiculo = (req, res, next) => {
     db.run(
       sql,
       [veiculo, marca, ano, descricao, vendido, created, updated],
-      (err) => {
+      function (err) {
         if (err) {
           res.status(500).json({ error: 'Erro ao criar veiculo' });
         } else {
           console.log('Veiculo cadastrado com sucesso');
-          res.status(200).json({ message: 'Veículo criado com sucesso!' });
+          res
+            .status(200)
+            .json({ message: 'Veículo criado com sucesso!', id: this.lastID });
         }
       }
     );
