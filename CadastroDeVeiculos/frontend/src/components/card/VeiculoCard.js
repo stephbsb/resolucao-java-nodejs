@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import styles from './VeiculoCard.module.css';
 import useFetch from '../../hooks/useFetch';
 import { deleteVeiculo } from '../../api';
+import { Link } from 'react-router-dom';
 
 const VeiculoCard = ({ dados, handleDelete }) => {
   const {
@@ -56,7 +57,9 @@ const VeiculoCard = ({ dados, handleDelete }) => {
         </li>
       </ul>
       <div className={styles.cardButtons}>
-        <button>Atualizar</button>
+        <Link to={`/atualiza/${id}`} className={styles.atualizaButton}>
+          Atualizar
+        </Link>
         <button onClick={handleDeleteVeiculo}>Deletar</button>
       </div>
     </div>
