@@ -24,7 +24,7 @@ const sql = `
         created DATETIME NOT NULL,
         updated DATETIME NOT NULL
 
-        CHECK ((vendido == 0 OR vendido == 1) AND length(marca) >= 3 AND length(veiculo) >= 3 AND length(descricao) >= 3 AND ano >= 1900 AND ano <= 2050)
+        CHECK ((vendido == 0 OR vendido == 1) AND length(marca) >= 2 AND length(veiculo) >= 2 AND length(descricao) >= 2 AND ano >= 1900 AND ano <= 2050)
       )
       `;
 
