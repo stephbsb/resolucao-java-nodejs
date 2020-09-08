@@ -26,11 +26,12 @@ module.exports = {
 
   findVeiculos(req, res) {
     const q = req.query;
+
     if (!Object.keys(q)[0]) {
       return res
         .status(400)
         .json({ error: 'Filtros incompletos para a pesquisa.' });
-    } else if (q.length > 1) {
+    } else if (Object.keys(q).length > 1) {
       return res
         .status(400)
         .json({ error: 'Entre apenas um parametro de busca.' });
