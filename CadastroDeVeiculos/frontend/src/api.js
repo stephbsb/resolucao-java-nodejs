@@ -17,3 +17,22 @@ export function deleteVeiculo(id) {
     },
   };
 }
+
+export function createVeiculo(veiculo, marca, ano, descricao, vendido) {
+  return {
+    url: API_URL + `/veiculos`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        veiculo: veiculo,
+        marca: marca,
+        ano: Number.parseInt(ano),
+        descricao: descricao,
+        vendido: vendido,
+      }),
+    },
+  };
+}
