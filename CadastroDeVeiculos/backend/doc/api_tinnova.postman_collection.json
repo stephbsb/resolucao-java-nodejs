@@ -1,0 +1,1632 @@
+{
+	"info": {
+		"_postman_id": "f85dfda5-a857-41d0-9ac8-7fe704e2fd5b",
+		"name": "api_tinnova",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/veiculos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"veiculo\": \"Fit\",\r\n    \"marca\": \"Honda\", \r\n    \"ano\": 2020, \r\n    \"descricao\": \"rosa\",\r\n    \"vendido\": \"amarelo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/veiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"veiculos"
+					]
+				},
+				"description": "Cria um novo veiculo no banco de dados e retorna o id do registro criado"
+			},
+			"response": [
+				{
+					"name": "fail : dados inconsistentes",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"veiculo\": \"Fit\",\r\n    \"marca\": \"Honda\", \r\n    \"ano\": 2020, \r\n    \"descricao\": \"rosa\",\r\n    \"vendido\": \"amarelo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"35-9PoMMykzEWYZs6d859AxBZorIBQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:42:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Erro ao criar veículo. Dados inválidos!\"\n}"
+				},
+				{
+					"name": " success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"veiculo\": \"Fit\",\r\n    \"marca\": \"Honda\", \r\n    \"ano\": 2020, \r\n    \"descricao\": \"rosa\",\r\n    \"vendido\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30-nmFmIiK7Zy1mK8kEU62TjCwaXWs\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:35:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Veiculo criado com sucesso!\",\n    \"id\": 7\n}"
+				},
+				{
+					"name": "fail : marca escrita errada",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"veiculo\": \"Fit\",\r\n    \"marca\": \"Hondaaa\", \r\n    \"ano\": 2020, \r\n    \"descricao\": \"rosa\",\r\n    \"vendido\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "290"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"122-w4aeQ/e2MQx0HO7RYq7P9YMo9Mo\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:42:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Entre com uma marca válida. Não são aceitos marcas escritas de forma errada!\",\n    \"marcas\": [\n        \"Chevrolet\",\n        \"Volkswagen\",\n        \"Fiat\",\n        \"Renault\",\n        \"Ford\",\n        \"Toyota\",\n        \"Hyundai\",\n        \"Jeep\",\n        \"Honda\",\n        \"Nissan\",\n        \"Citroen\",\n        \"Mitsubish\",\n        \"Peugeot\",\n        \"Chery\",\n        \"BMW\",\n        \"Mercedes-Benz\",\n        \"Kia\",\n        \"Audi\",\n        \"Volvo\",\n        \"Land Rover\"\n    ]\n}"
+				},
+				{
+					"name": "fail : missing value",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"veiculo\": \"Fit\",\r\n    \"marca\": \"Honda\", \r\n    \"ano\": 2020, \r\n    \"descricao\": \"rosa\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"35-9PoMMykzEWYZs6d859AxBZorIBQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:41:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Erro ao criar veículo. Dados inválidos!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/veiculos/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"veiculo\": \"Volvo S60\",\r\n    \"marca\": \"Volvo\", \r\n    \"ano\": 2345678, \r\n    \"descricao\": \"vermelho\", \r\n    \"vendido\":false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/veiculos/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"veiculos",
+						"4"
+					]
+				},
+				"description": "Atualiza o veiculo passando todos os dados"
+			},
+			"response": [
+				{
+					"name": "fail : missing data",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"veiculo\": \"Volvo S60\",\r\n    \"marca\": \"Volvo\", \r\n    \"ano\": \"2015\", \r\n    \"descricao\": \"vermelho\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "30"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1e-69/8VU3VUII2db9QBInv1XE1NeU\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:45:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Dados incompletos!\"\n}"
+				},
+				{
+					"name": "fail : dados inconsistentes",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"veiculo\": \"Volvo S60\",\r\n    \"marca\": \"Volvo\", \r\n    \"ano\": 2345678, \r\n    \"descricao\": \"vermelho\", \r\n    \"vendido\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"39-KrG++PuY8aRlPMhJVLWr51qpE2M\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:46:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Erro ao atualizar veículo. Dados inválidos!\"\n}"
+				},
+				{
+					"name": "fail : id nao existente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"veiculo\": \"Volvo S60\",\r\n    \"marca\": \"Volvo\", \r\n    \"ano\": \"2015\", \r\n    \"descricao\": \"vermelho\", \r\n    \"vendido\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"1"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-JsX+UtS2FG2/YbExZqPQyMJ7x9I\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:44:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Este veiculo nao existe.\"\n}"
+				},
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"veiculo\": \"Volvo S60\",\r\n    \"marca\": \"Volvo\", \r\n    \"ano\": \"2015\", \r\n    \"descricao\": \"vermelho\", \r\n    \"vendido\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-VzqeFecjja4iBoscMn4Me1cWfkw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:44:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Veiculo atualizado com sucesso!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/veiculos/{id}",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ano\": 2020,\r\n    \"vendido\": true    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/veiculos/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"veiculos",
+						"4"
+					]
+				},
+				"description": "atualiza alguns dados do cadastro do veiculo"
+			},
+			"response": [
+				{
+					"name": "fail : dados inconsistentes",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendido\": \"amarelo\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"39-KrG++PuY8aRlPMhJVLWr51qpE2M\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:48:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Erro ao atualizar veículo. Dados inválidos!\"\n}"
+				},
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendido\": true    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-VzqeFecjja4iBoscMn4Me1cWfkw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:48:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Veiculo atualizado com sucesso!\"\n}"
+				},
+				{
+					"name": "fail : veiculo nao existente",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendido\": true    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"1"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-JsX+UtS2FG2/YbExZqPQyMJ7x9I\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:48:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Este veiculo nao existe.\"\n}"
+				},
+				{
+					"name": " success 2",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ano\": 2020,\r\n    \"vendido\": true    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/veiculos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-VzqeFecjja4iBoscMn4Me1cWfkw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:49:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Veiculo atualizado com sucesso!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/veiculos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/veiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"veiculos"
+					]
+				},
+				"description": "Lista todos os veiculos no banco de dados"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "165"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a5-w8a5e3Wp0rohvXbIvS9e9RCUs7s\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:32:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"veiculos\": [\n        {\n            \"id\": 4,\n            \"veiculo\": \"S10\",\n            \"marca\": \"Ford\",\n            \"ano\": 2000,\n            \"descricao\": \"Branca\",\n            \"vendido\": true,\n            \"created\": \"2020-09-07 23:03:46\",\n            \"updated\": \"2020-09-07 23:54:20\"\n        },\n        {\n            \"id\": 5,\n            \"veiculo\": \"C3\",\n            \"marca\": \"Citroen\",\n            \"ano\": 2020,\n            \"descricao\": \"verde\",\n            \"vendido\": false,\n            \"created\": \"2020-09-08 10:33:37\",\n            \"updated\": \"2020-09-08 10:33:37\"\n        },\n        {\n            \"id\": 6,\n            \"veiculo\": \"New Fiesta\",\n            \"marca\": \"Ford\",\n            \"ano\": 2020,\n            \"descricao\": \"prata\",\n            \"vendido\": false,\n            \"created\": \"2020-09-08 10:34:55\",\n            \"updated\": \"2020-09-08 10:34:55\"\n        },\n        {\n            \"id\": 7,\n            \"veiculo\": \"Fit\",\n            \"marca\": \"Honda\",\n            \"ano\": 2020,\n            \"descricao\": \"rosa\",\n            \"vendido\": true,\n            \"created\": \"2020-09-08 10:35:29\",\n            \"updated\": \"2020-09-08 10:35:29\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "/veiculos/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/veiculos/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"veiculos",
+						"4"
+					]
+				},
+				"description": "busca os dados do veiculo a aprtir de seu id"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "171"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ab-xYdvYqHlvG6UaUAe2+qCUZuaE0I\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:51:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"veiculo\": {\n        \"id\": 4,\n        \"veiculo\": \"Volvo S60\",\n        \"marca\": \"Volvo\",\n        \"ano\": 2020,\n        \"descricao\": \"vermelho\",\n        \"vendido\": true,\n        \"created\": \"2020-09-07 23:03:46\",\n        \"updated\": \"2020-09-08 10:49:30\"\n    }\n}"
+				},
+				{
+					"name": "fail : veiculo nao existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"3"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-JArEV7mfZ7NieornOLuV9F7ROr4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:50:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Este veículo nao existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/veiculos/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/veiculos/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"veiculos",
+						"4"
+					]
+				},
+				"description": "Deleta um veiculo"
+			},
+			"response": [
+				{
+					"name": "success : veiculo deletado",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b-vWSKS1fufXkhfRk0cDwbeye0dZ0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 14:05:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Veiculo deletado com sucesso!\"\n}"
+				},
+				{
+					"name": "fail : veiculo inexistente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"11"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-NHoukPzWNaQlAIdTPjGdmgcFXqs\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 14:03:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Este veiculo não existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/veiculos/find?<param>=<value>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/veiculos/find?ano=2020&veiculo=c3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"veiculos",
+						"find"
+					],
+					"query": [
+						{
+							"key": "ano",
+							"value": "2020"
+						},
+						{
+							"key": "veiculo",
+							"value": "c3"
+						}
+					]
+				},
+				"description": "retorna veiculo que condizem com a condicao passada por paramentro. aceita apenas um paramentro de pesquisa"
+			},
+			"response": [
+				{
+					"name": "success : vazio - nenhum registro encontrado",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos/find?ano=1900",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"find"
+							],
+							"query": [
+								{
+									"key": "ano",
+									"value": "1900"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f-BdW02ArOIHUnnQiliROYsuXzOVs\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:53:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"veiculos\": []\n}"
+				},
+				{
+					"name": "fail : parametro inconsistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos/find?passarinho=azul",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"find"
+							],
+							"query": [
+								{
+									"key": "passarinho",
+									"value": "azul"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"28-ypCh9xMZ7dju9pHGWex6K2CKn/Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:54:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Erro ao ler o banco de dados\"\n}"
+				},
+				{
+					"name": "success : registros encontrados",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos/find?vendido=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"find"
+							],
+							"query": [
+								{
+									"key": "vendido",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "325"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"145-CsZowM/9GE5ITjAbo1/MOalywc8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:51:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"veiculos\": [\n        {\n            \"id\": 5,\n            \"veiculo\": \"C3\",\n            \"marca\": \"Citroen\",\n            \"ano\": 2020,\n            \"descricao\": \"verde\",\n            \"vendido\": false,\n            \"created\": \"2020-09-08 10:33:37\",\n            \"updated\": \"2020-09-08 10:33:37\"\n        },\n        {\n            \"id\": 6,\n            \"veiculo\": \"New Fiesta\",\n            \"marca\": \"Ford\",\n            \"ano\": 2020,\n            \"descricao\": \"prata\",\n            \"vendido\": false,\n            \"created\": \"2020-09-08 10:34:55\",\n            \"updated\": \"2020-09-08 10:34:55\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "fail : mais de um parametro de busca",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/veiculos/find?ano=2020&veiculo=c3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"veiculos",
+								"find"
+							],
+							"query": [
+								{
+									"key": "ano",
+									"value": "2020"
+								},
+								{
+									"key": "veiculo",
+									"value": "c3"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,X-Requested-With, Content-Type, Accept,Authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f-gbLZ2h8zg9tyi5YOo3rZ7uVNeHk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Sep 2020 13:58:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Entre apenas um parametro de busca.\"\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -20,19 +20,21 @@ Abra a tabela clicando sobre ela e depois em 'Show Table' (Isso deve ser feito t
 
 ### estrutura
 
-
-| Atributo |  Tipo   |
-|----------|---------|
-|veiculo   |string   |
-|marca     |string   |
-|ano       |integer  |
-|descricao |text     |
-|vendido   |bool     |
-|created   |datetime |
-|updated   |datetime |
- 
+| Atributo  | Tipo     |
+| --------- | -------- |
+| veiculo   | string   |
+| marca     | string   |
+| ano       | integer  |
+| descricao | text     |
+| vendido   | bool     |
+| created   | datetime |
+| updated   | datetime |
 
 # EndPoints
+
+Documentação da api: <a href="https://github.com/stephbsb/resolucao-java-nodejs/tree/master/CadastroDeVeiculos/backend/doc/api_tinnova.postman_collection.json"> postman_collection </a> </br>
+
+Importe a documentação no postman. Contem exemplos de respostas esperadas para cada requisição.
 
 #### GET /veiculos
 
