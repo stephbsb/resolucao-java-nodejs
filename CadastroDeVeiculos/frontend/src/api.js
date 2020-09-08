@@ -36,3 +36,31 @@ export function createVeiculo(veiculo, marca, ano, descricao, vendido) {
     },
   };
 }
+
+export function getVeiculoById(id) {
+  return {
+    url: API_URL + '/veiculos/' + id,
+    options: {
+      method: 'GET',
+    },
+  };
+}
+
+export function updateVeiculo(id, veiculo, marca, ano, descricao, vendido) {
+  return {
+    url: API_URL + `/veiculos/${id}`,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        veiculo: veiculo,
+        marca: marca,
+        ano: Number.parseInt(ano),
+        descricao: descricao,
+        vendido: vendido,
+      }),
+    },
+  };
+}
