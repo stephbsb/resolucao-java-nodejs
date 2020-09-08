@@ -49,11 +49,13 @@ const VeiculoCard = ({ dados, handleDelete }) => {
         </li>
         <li>
           <b>Data de Cadastro:</b>{' '}
-          {created.split(' ')[0].split('-').reverse().join('/')}
+          {created.split(' ')[0].split('-').reverse().join('/')}{' '}
+          {created.split(' ')[1]}
         </li>
         <li>
           <b>Ultimo Update:</b>{' '}
-          {updated.split(' ')[0].split('-').reverse().join('/')}
+          {updated.split(' ')[0].split('-').reverse().join('/')}{' '}
+          {updated.split(' ')[1]}
         </li>
       </ul>
       <div className={styles.cardButtons}>
