@@ -54,11 +54,26 @@ public class SomaDosMultiplos {
 	public static int calculaSomaMultiplosDeTresECinco(int numero){
 		int soma = 0;
 		
-		for(int i = (numero-1); i >= 3; i--) {
-			if( i % 3 == 0 || i % 5 == 0 ) {
+		// Inicia o loop com o primeiro numero inteiro menor
+		int inicio = numero - 1;
+		
+		// testa multiplos de 5 primeiro: calcula primeiro multiplo de 5 e a partir dele diminui 5 a cada loop:		
+		int testa5 = inicio - inicio % 5;
+		
+		for(int i = testa5; i >= 5; i-=5) {
+			soma+=i;
+			
+		}
+		
+		// testa multiplos de 3: calcula primeiro multiplo de 3 e a partir dele diminui 3 a cada loop
+		// verificando se o multiplo tambem e multiplo de 5 para nao somar o mesmo numero duas vezes:
+		int testa3 = inicio - inicio % 3;
+		
+		for(int i = testa3; i >= 3; i-=3) {
+			if(  i % 5 != 0 ) {
 				soma+=i;
 			}
-		}
+		}		
 		
 		return soma;
 	}
