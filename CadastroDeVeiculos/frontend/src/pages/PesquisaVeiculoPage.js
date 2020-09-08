@@ -7,7 +7,7 @@ import styles from './PesquisaVeiculoPage.module.css';
 
 const PesquisaVeiculoPage = () => {
   const { data, request, error } = useFetch();
-  const { change, setChange } = useState(false);
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
     const { url, options } = getVeiculos();
