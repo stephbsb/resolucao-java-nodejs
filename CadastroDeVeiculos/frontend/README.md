@@ -1,6 +1,6 @@
 # Descrição
 
-Este é o front de um cadastro de veículos e consome a API.</br>
+Este é o front de um cadastro de veículos e consome a API. Pode ser usado para facilitar o teste de algumas funcionalidades da API</br>
 API: <a href="https://github.com/stephbsb/resolucao-java-nodejs/tree/master/CadastroDeVeiculos/backend">Backend</a>
 
 # Funcionalidades

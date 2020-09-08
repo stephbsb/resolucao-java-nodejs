@@ -34,8 +34,8 @@ Abra a tabela clicando sobre ela e depois em 'Show Table' (Isso deve ser feito t
 
 Documentação da api: <a href="https://github.com/stephbsb/resolucao-java-nodejs/tree/master/CadastroDeVeiculos/backend/doc/api_tinnova.postman_collection.json"> postman_collection </a> </br>
 
-Importe a documentação no postman. Contem exemplos de respostas esperadas para cada requisição.
-ou [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9d2f3b66d915fed20d16)
+Importe a documentação no postman. Contem exemplos de respostas esperadas para cada requisição ou
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9d2f3b66d915fed20d16)
 
 #### GET /veiculos
 
