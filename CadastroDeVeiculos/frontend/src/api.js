@@ -64,3 +64,12 @@ export function updateVeiculo(id, veiculo, marca, ano, descricao, vendido) {
     },
   };
 }
+
+export function getVeiculoByParam(key, value) {
+  return {
+    url: API_URL + `/veiculos/find?${key}=${value}`,
+    options: {
+      method: 'GET',
+    },
+  };
+}
