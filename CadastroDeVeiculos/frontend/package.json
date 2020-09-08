@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "main": "App.js",
   "dependencies": {
     "history": "^5.0.0",
     "react": "^16.13.1",
