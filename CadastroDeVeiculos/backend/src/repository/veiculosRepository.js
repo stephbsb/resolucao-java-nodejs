@@ -93,6 +93,7 @@ module.exports = {
         [veiculo, marca, ano, descricao, vendido, created, updated],
         function (err) {
           if (err) {
+            console.log(err);
             if (err.code === 'SQLITE_CONSTRAINT') {
               reject(new Error('Erro ao criar veículo. Dados inválidos!'));
             } else {
