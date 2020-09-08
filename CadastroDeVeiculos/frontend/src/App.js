@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import PesquisaVeiculoPage from './pages/PesquisaVeiculoPage';
 import CadastroVeiculoPage from './pages/CadastroVeiculoPage';
-import AtualizaCadastroPage from './pages/AtualizaCadastroPage';
+import AtualizaVeiculoPage from './pages/AtualizaVeiculoPage';
 import Header from './components/Header';
 
 import './App.css';
@@ -22,7 +22,7 @@ function App() {
               <CadastroVeiculoPage />
             </Route>
             <Route path='/atualiza/:id'>
-              <AtualizaCadastroPage />
+              <AtualizaVeiculoPage />
             </Route>
           </Routes>
         </main>
