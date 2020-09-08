@@ -1,5 +1,5 @@
 # Descrição
-Projeto contendo resolução de problemas usando Java e NodeJS
+Projeto contendo resolução de problemas usando Java e NodeJS e ReactJS
 
 # JAVA
 
@@ -35,17 +35,7 @@ No pior caso o algoritmo irá passar pelo array (n - 1) vezes e a cada loop ele 
 
 O programa irá receber no terminal um numero natural maior que zero e deve retornar a soma de todos os numero abaixo dele que são multiplos de 3 e 5 </br></br>
 
-
-
-# NodeJS
-
-Leia o arquivo mais detalhado sobre a API RESTful criada para cadastro de veículos: 
-<a href="https://github.com/stephbsb/resolucao-java-nodejs/blob/master/CadastroDeVeiculos/backend/">CadastroDeVeiculos/backend</a>
-
-
-# Como executar
-
-### Java
+### Como executar
 
 Opção 1: Criar um projeto em alguma IDE de JAVA, baixar o zip contendo os arquivos e adicionar o arquivo no projeto e selecionar a opção run as Java Application.
 
@@ -62,7 +52,16 @@ $ javac Eleicao.java
 $ java -cp <caminho do diretorio>/Eleicao/src main.Eleicao
 ```
 
-### NodeJS
+# NodeJS & ReactJS
+
+Leia o arquivo mais detalhado sobre a aplicação e API RESTful criada para cadastro de veículos: 
+<a href="https://github.com/stephbsb/resolucao-java-nodejs/blob/master/CadastroDeVeiculos/backend/">CadastroDeVeiculos/</a>
+
+
+
+### Como executar
+
+#### NodeJS 
 
 ```bash
 # git clone https://github.com/stephbsb/resolucao-java-nodejs.git
@@ -76,4 +75,19 @@ $ npm install
 $ npm start
 
 # A API irá ouvir requisições na porta 5000
+```
+
+
+#### ReactJS 
+
+```bash
+# git clone https://github.com/stephbsb/resolucao-java-nodejs.git
+# Abrir o terminal no diretorio contendo o root do projeto
+$ cd <caminho do diretorio>/CadastroDeVeiculos/frontend
+
+# Instale as dependencias
+$ npm install
+
+# Execute a aplicação
+$ npm start
 ```
