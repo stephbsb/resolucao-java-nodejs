@@ -91,7 +91,7 @@ module.exports = {
         .create(veiculo, marca, ano, descricao, vendido, created, updated)
         .then((id) => {
           res
-            .status(200)
+            .status(201)
             .json({ message: 'Veiculo criado com sucesso!', id: id });
         })
         .catch((error) => {
@@ -131,7 +131,7 @@ module.exports = {
     const dados = req.body;
     console.log(Object.values(dados));
     if (isAnyEmptyOrNull(Object.values(dados))) {
-      res.status(500).json({ error: 'Não há dados para atualizar' });
+      res.status(400).json({ error: 'Não há dados para atualizar' });
     } else if (dados.marca && !validateMarca(dados.marca)) {
       res.status(400).json({
         error:
