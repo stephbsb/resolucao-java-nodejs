@@ -9,7 +9,7 @@ NodeJS </br>
 ExpressJS </br>
 Banco de Dados: sqlite3 (Relacional) </br>
 
-# BD
+# Banco de Dados
 
 O banco de dados usado é armazenado em memória no arquivo src/database/database.db</br>
 Para visualizar o banco de dados no VSCode pode ser usada a extensao SQLite.</br>
@@ -20,13 +20,17 @@ Abra a tabela clicando sobre ela e depois em 'Show Table' (Isso deve ser feito t
 
 ### estrutura
 
-veiculo: string </br>
-marca: string </br>
-ano: integer </br>
-descricao: text </br>
-vendido: bool </br>
-created: datetime </br>
-updated: datetime </br>
+
+| Atributo |  Tipo   |
+|----------|---------|
+|veiculo   |string   |
+|marca     |string   |
+|ano       |integer  |
+|descricao |text     |
+|vendido   |bool     |
+|created   |datetime |
+|updated   |datetime |
+ 
 
 # EndPoints
 

@@ -5,14 +5,14 @@ API: <a href="https://github.com/stephbsb/resolucao-java-nodejs/tree/master/Cada
 
 # Funcionalidades
 
-1. Listar todos os veiculos
-2. Criar novos veiculos
-3. Deletar veiculo
-4. Atualizar cadastro do veiculo
-5. Mostra quantidade de Veiculos nao vendidos
-6. Mostra quantidade de carros por fabricante na base de dados
-7. Veiculos cadastrados na ultima semana (pending)
-8. Exibir a distribuição de veiculos por década de fabricação (pending)
+- [x] Listar todos os veiculos
+- [x] Criar novos veiculos
+- [x] Deletar veiculo
+- [x] Atualizar cadastro do veiculo
+- [x] Mostra quantidade de Veiculos nao vendidos
+- [x] Mostra quantidade de carros por fabricante na base de dados
+- [ ] Veiculos cadastrados na ultima semana (pending)
+- [ ] Exibir a distribuição de veiculos por década de fabricação (pending)
 
 # Tecnologias Utilizadas
 
